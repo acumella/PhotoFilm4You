@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+	<f:metadata>
+      <f:viewParam name="name" value="#{updatecategory.name}"/>
+      <f:viewParam name="id" value="#{updatecategory.id}"/>
+      <f:viewParam name="parentCategory" value="#{updatecategory.parentCategory}"/>
+   </f:metadata>
+   
+<ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+		<div class="card">
+		  <div class="card-header">
+		    <h5 class="card-title">Update category</h5>
+		  </div>
+		  <div class="card-body">		    
+		   <h:form rendered="${login.user.role == 'ROLE_ADMIN'}">
+ 			<div align="center">
+				<table border="1" width="50%" id="table1" title="Update Category" cellspacing="30" cellpadding="5">
+					<tr>
+						<td width="255" align="left" >
+							<p align="left"/><i><b><font size="4" face="Century">Category id</font></b></i>
+						</td>
+						<td width="255" align="left">
+					    	<h:inputText value="#{updatecategory.id}" required="true" />
+						</td>
+					</tr>
+					<tr>
+						<td width="255" align="left" >
+							<p align="left"/><i><b><font size="4" face="Century">Category name</font></b></i>
+						</td>
+						<td width="255" align="left">
+					    	<h:inputText value="#{updatecategory.name}" required="true" />
+						</td>
+					</tr>
+					<tr>
+						<td width="255" align="left" >
+							<p align="left"/><i><b><font size="4" face="Century">Parent Category name</font></b></i>
+						</td>
+						<td width="255" align="left">
+					    	<h:inputText value="#{updatecategory.parentCategory}" required="true" />
+						</td>
+					</tr>
+					<tr>
+						<td width="255">
+							<p align="left"/><i><b><font size="4" face="Century">Result</font></b></i>
+						</td>
+						<td width="255">
+							<p align="left"/><h:outputText value="#{updatecategory.result}" />
+						</td>
+					</tr>
+				</table> 
+				<table border="0" width="50%" id="table2" title="add1" cellspacing="5" cellpadding="5">
+					<tr>
+						<td height="100" width="510" align="center">
+ 					    	<h:commandButton value="Update Category" action="#{updatecategory.updateCategory}" />
+					    </td>
+					</tr>
+				</table> 
+			</div> 
+			</h:form>
+		    
+		  </div>
+		</div>
+
+ 
+			
+			
+ 		
+	</ui:define>
+</ui:composition>
+</html>

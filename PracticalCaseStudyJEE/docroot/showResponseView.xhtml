@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+	
+   <f:metadata>
+      <f:viewParam name="responseId" value="#{showresponse.responseId}"/>
+      <f:viewParam name="responseId" value="#{acceptorrejectresponse.responseId}"/>
+      <f:viewParam name="responseId" value="#{listallresponseimages.responseId}"/>
+   </f:metadata>
+
+  <ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+		<br/>
+ 		<h:form>
+ 			<div align="center">
+				<table border="1" width="50%" id="table1" title="Show Response">
+					<tr>
+						<td width="155">
+							<p align="left"/><i><b><font size="4" face="Century">Id:</font></b></i>
+						</td>
+						<td>
+							<p align="left"/><h:outputText value="#{showresponse.dataResponse.id}"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="155">
+							<p align="left"/><i><b><font size="4" face="Century">Message:</font></b></i>
+						</td>
+						<td>
+							<p align="left"/><h:outputText value="#{showresponse.dataResponse.message}"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="155">
+							<p align="left"/><i><b><font size="4" face="Century">Status:</font></b></i>
+						</td>
+						<td>
+							<p align="left"/><h:outputText value="#{showresponse.dataResponse.status}"/>
+						</td>
+					</tr>
+
+				</table> 
+				<h:form align="center" >	
+					<h:dataTable value="#{listallresponseimages.responseImagesListView}" var="item" bgcolor="#F1F1F1" border="10" first="0" width="100%" frame="hsides" rules="all"  >
+ 						<h:column>
+   							<td width="212" rowspan="6">
+      							<p align="center" />
+   								<h:graphicImage border="0" url="resources/images/#{item.path}" width="800"/>
+      						</td>
+ 						</h:column>
+ 					</h:dataTable>
+ 	  			</h:form>		
+			</div> 
+			
+			<p align="center">
+				<h:commandLink value="Accept" action="#{acceptorrejectresponse.setAccepted}" />
+			</p>
+			
+			<p align="center">
+				<h:commandLink value="Reject" action="#{acceptorrejectresponse.setRejected}" />
+			</p>
+			
+			<p align="center">
+				<h:outputText value="#{acceptorrejectresponse.result}"/>
+			</p>
+			
+			<p align="center">
+				<h:commandLink value="Return" action="listAllQuestionResponsesView" />
+			</p>
+ 		</h:form>
+	</ui:define>
+  </ui:composition>
+</html>

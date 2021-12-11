@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">   
+  <ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+		<br/>
+ 		<h:form class="form">
+ 			<div align="center">
+				<table border="1" style="width: 50%;" id="table" title="Register administrator" class="table table-bordered">
+					<tr>
+						<th width="155">
+							<label>Email:</label>
+						</th>
+						<td>
+					    	<h:inputText value="#{registeradministrator.email}" required="true" class="form-control" />
+						</td>
+					</tr>
+					<tr>
+						<th width="155">
+							<p align="left"/><i><b><font size="4" face="Century">Password:</font></b></i>
+						</th>
+						<td>
+					    	<h:inputSecret value="#{registeradministrator.password}" required="true" class="form-control" />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" width="155" class="text-center">
+ 					    	<h:commandButton value="Register" action="#{registeradministrator.create}" class="btn btn-success" />
+					    </td>
+					</tr>
+					<tr>
+						<td width="155">
+							<p align="left"/><i><b><font size="4" face="Century">Result:</font></b></i></td>
+						<td>
+							<p align="left"/><h:outputText value="#{registeradministrator.result}" />
+						</td>
+					</tr>
+				</table> 	
+			</div> 
+ 		</h:form>
+	</ui:define>
+  </ui:composition>
+</html>

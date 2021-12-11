@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+  <ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+	  <h:form align="left" >	
+		<h:commandLink action="#{listallquestions.previousScreen}" value="Previous" />
+		<h:outputText value="   " />
+		<h:commandLink action="#{listallquestions.nextScreen}" value="Next" />		
+	  </h:form>
+	  <h:form align="left" >	
+		<h:dataTable value="#{listallquestions.questionsListView}" var="item" bgcolor="#F1F1F1" border="10" first="0" width="100%" frame="hsides" rules="all"  >
+ 			<f:facet name="header">			
+  			<h:outputText align="center" value="Questions asked" />		
+  			</f:facet> 
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="ID" />
+   				</f:facet> 
+   				<p align="center"><h:outputText value="#{item.id}" /></p>
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="Title"/>
+   				</f:facet> 
+     			<h:outputText value="#{item.title}" />
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="Message" />
+   				</f:facet> 
+   				<h:outputText value="#{item.message}" />
+ 			</h:column>
+ 			<h:column>			
+					<h:link outcome="showQuestionView" value="Show question" >
+						<f:param name="questionId" value="#{item.id}" />						
+					</h:link>		
+ 			</h:column> 
+ 			<h:column>			
+					<h:link outcome="answerQuestionView" value="Answer question" >
+						<f:param name="questionId" value="#{item.id}" />						
+					</h:link>		
+ 			</h:column> 
+ 			<h:column>			
+					<h:link outcome="listAllQuestionResponsesView" value="Question responses" >
+						<f:param name="questionId" value="#{item.id}" />						
+					</h:link>		
+ 			</h:column> 		
+ 		</h:dataTable>
+ 	  </h:form>		
+	</ui:define>
+  </ui:composition>
+</html>

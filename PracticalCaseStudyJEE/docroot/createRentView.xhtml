@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">   
+  <ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+		<br/>
+ 		<h:form>
+ 			<div align="center">
+				<table border="1" width="50%" id="table1" title="Create rent">
+					<tr>
+						<td width="155">
+							<p align="left"/><i><b><font size="4" face="Century">From date:</font></b></i>
+						</td>
+						<td>
+					    	<h:inputText value="#{createrent.fromDate}" required="true" />
+						</td>
+					</tr>
+					<tr>
+						<td width="155">
+							<p align="left"/><i><b><font size="4" face="Century">To date:</font></b></i></td>
+						<td>
+							<p align="left"/><h:inputText value="#{createrent.toDate}" />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" width="155">
+ 					    	<h:commandButton value="Create rent" action="#{createrent.createRent}" />
+					    </td>
+					</tr>
+					<tr>
+						<td width="155">
+							<p align="left"/><i><b><font size="4" face="Century">Result:</font></b></i></td>
+						<td>
+							<p align="left"/><h:outputText value="#{createrent.result}" />
+						</td>
+					</tr>
+				</table> 	
+			</div> 
+ 		</h:form>
+	</ui:define>
+  </ui:composition>
+</html>

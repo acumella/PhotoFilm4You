@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+  <ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+	  <h:form align="left" >	
+		<h:commandLink action="#{rentList.previousScreen}" value="Previous" />
+		<h:outputText value="   " />
+		<h:commandLink action="#{rentList.nextScreen}" value="Next" />		
+	  </h:form>
+	  <h:form align = "center">
+		<table border="0" width="35%" id="table1" title="">
+			<tr>
+				<td width="155">
+					<p align="left"/><i><b><font size="4" face="Century">Search id:</font></b></i>
+				</td>
+				<td>
+			    	<!--<h:inputText value="#{rentList.rentIdToSearch}"/>-->
+			    	<h:inputText value="#{rentList.rent}"/>
+				</td>
+				<td>
+			    	<h:commandButton value="Search" action="#{rentList.updateListById}"/>
+				</td>
+				<td>
+			    	<h:commandButton value="Show all" action="#{rentList.updateList}"/>
+				</td>
+			</tr>
+		</table>
+	  </h:form>
+	  <h:form align="left" >	
+		<h:dataTable value="#{rentList.rentsListView}" var="item" bgcolor="#F1F1F1" border="10" first="0" width="100%" frame="hsides" rules="all"  >
+ 			<f:facet name="header">			
+  			<h:outputText align="center" value="Items added to rent" />		
+  			</f:facet> 
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="id" />
+   				</f:facet> 
+   				<p align="center"><h:outputText value="#{item.id}" /></p>
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="from date"/>
+   				</f:facet> 
+     			<h:outputText converter="#{dateStyle}" value="#{item.fromDate}" />
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="To date" />
+   				</f:facet> 
+    			<h:outputText converter="#{dateStyle}" value="#{item.toDate}" />
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="Customer nif"/>
+   				</f:facet>
+     			<p align="right"><h:outputText align="right" value="#{item.customer.nif}" /></p>
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="Status"/>
+   				</f:facet>
+     			<p align="right"><h:outputText align="right" value="#{item.status}" /></p>
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="Total price"/>
+   				</f:facet>
+     			<p align="right"><h:outputText align="right" value="#{item.totalPrice}" /></p>
+ 			</h:column>
+ 			<h:column>			
+					<h:link outcome="showRentView" value="Show rent" >
+						<f:param name="idRent" value="#{item.id}" />						
+					</h:link>		
+ 			</h:column> 			
+ 			<h:column>			
+					<h:link outcome="updateRentStatusView" value="Update status" >
+						<f:param name="idRent" value="#{item.id}" />						
+					</h:link>		
+ 			</h:column> 			
+ 			<h:column>			
+					<h:link outcome="cancelRentView" value="Cancel rent" >
+						<f:param name="idRent" value="#{item.id}" />						
+					</h:link>		
+ 			</h:column> 			
+ 			<h:column>			
+					<h:link outcome="confirmRentView" value="Confirm rent" >
+						<f:param name="idRent" value="#{item.id}" />						
+					</h:link>		
+ 			</h:column>
+ 			<h:column>
+ 				<!-- <p><h:commandLink value="List items rent" action="#{rentItemsList.updateList}" /></p>--> 							
+				<h:link outcome="listAllRentItemsView" value="List items rent" >
+					<f:param name="idRent" value="#{item.id}" />						
+				</h:link>	
+ 			</h:column> 
+ 			<h:column>
+ 				<!-- <p><h:commandLink value="List items rent" action="#{rentItemsList.updateList}" /></p>--> 							
+				<h:link outcome="listAvailableItemsBetweenDatesView" value="List items available" >
+					<f:param name="idRent" value="#{item.id}" />	
+					<f:param name="fromDate" value="#{item.fromDate}" />						
+					<f:param name="toDate" value="#{item.toDate}" />
+				</h:link>	
+ 			</h:column> 
+ 		</h:dataTable>
+ 	  </h:form>		
+	</ui:define>
+  </ui:composition>
+</html>

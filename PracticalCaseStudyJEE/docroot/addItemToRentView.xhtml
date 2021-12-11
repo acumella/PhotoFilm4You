@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+   <f:metadata>
+      <f:viewParam name="itemId" value="#{addItemToRent.itemId}"/>
+      <f:viewParam name="idRent" value="#{addItemToRent.rentSelected}"/>
+   </f:metadata>
+
+  <ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+		<br/>
+ 		<h:form>
+ 			<div align="center">
+				<table border="1" width="50%" id="table1">
+					<tr>
+						<td width="155">
+							<p align="left"/><i><b><font size="4" face="Century">Serial Number:</font></b></i></td>
+						<td>
+							<p align="left"/><h:outputText value="#{addItemToRent.dataItem.serialNumber}" />
+						</td>
+					</tr>
+					<tr>
+						<td width="155">
+							<p align="left"/><i><b><font size="4" face="Century">Product:</font></b></i>
+						</td>
+						<td>
+							<p align="left"/><h:outputText value="#{addItemToRent.dataItem.product.name}" />
+						</td>
+					</tr>					
+					<tr>
+						<td width="155">
+							<p align="left"/><i><b><font size="4" face="Century">Rent id:</font></b></i>
+						</td>
+						<td>
+							<p align="left"/><h:outputText value="#{addItemToRent.rentSelected}" />
+						</td>
+					</tr>
+					<!-- <tr>
+						<td width="255" align="left">
+							<p align="left"/><i><b><font size="4" face="Century">Rent</font></b></i>
+						</td>
+						<td width="255" align="left">
+					    	<h:selectOneMenu value="#{addItemToRent.rentSelected}">
+    								<f:selectItems value="#{addItemToRent.rents}" />
+    								<f:ajax event="change" render="models" />
+							</h:selectOneMenu>
+						</td>
+					</tr>-->
+				</table> 	
+			</div> 
+			<p align="center">
+				<h:commandLink value="Add" action="#{addItemToRent.addItemToRent}" />
+			</p>
+			<br></br>			
+ 		</h:form>
+	</ui:define>
+  </ui:composition>
+</html>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+	<f:metadata>
+      <f:viewParam name="id" value="#{listallcategoryproducts.id}"/>
+   </f:metadata>
+   
+<ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+ 	 <div class="card">
+	  <div class="card-header">
+	    <h5 class="card-title">Show products by category</h5>
+	  </div>
+	  <div class="card-body">
+ 		<h:form>
+ 			<div align="center">
+				<table border="1" width="50%" id="table1" title="Add Item" cellspacing="30" cellpadding="5">
+					<tr>
+						<td width="255" align="left" >
+							<p align="left"/><i><b><font size="4" face="Century">Category</font></b></i>
+						</td>
+						<td>
+					    	<h:inputText value="#{listallcategoryproducts.id}" required="true" />
+					    </td>
+					 </tr>
+					<tr>
+						<td width="155">
+							<p align="left"/><i><b><font size="4" face="Century">Result</font></b></i></td>
+						<td>
+							<p align="left"/><h:outputText value="#{listallcategoryproducts.result}" />
+						</td>
+					</tr>
+				</table> 
+				<table border="0" width="50%" id="table2" title="add1" cellspacing="5" cellpadding="5">
+					<tr>
+						<td height="100" width="510" align="center">
+ 					    	<h:commandButton value="Show products" action="#{listallcategoryproducts.allProductsByCategoryList}" />
+					    </td>
+					</tr>
+				</table> 	
+			</div> 
+ 		</h:form>
+ 		
+ 		
+ 		
+	  <h:form align="left" >	
+		<h:dataTable value="#{listallcategoryproducts.productsListView}" var="item" bgcolor="#F1F1F1" border="10" first="0" width="100%" frame="hsides" rules="all"  >
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="id" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.id}" /></p>
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="name" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.name}" /></p>
+ 			</h:column>
+	 		<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="description" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.description}" /></p>
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="category" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.category.name}" /></p>
+ 			</h:column>	
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="brand" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.brand.name}" /></p>
+ 			</h:column>		
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="model" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.model.name}" /></p>
+ 			</h:column>	
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="daily price" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.dailyPrice}" /></p>
+ 			</h:column>	
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="available items" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.availableItems}" /></p>
+ 			</h:column>	
+ 		    <h:column>
+   				<f:facet name="header">
+   					<h:outputText value="product ratting" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.productRatting}" /></p>
+ 			</h:column>		
+ 		</h:dataTable>
+ 	  </h:form>	
+ 	  <br></br>
+	  <h:form align="left">	
+		<h:commandLink action="#{listallcategories.previousScreen}" value="Previous" />
+		<h:outputText value="   " />
+		<h:commandLink action="#{listallcategories.nextScreen}" value="Next" />		
+	  </h:form> 		
+	
+ 		
+ 		
+ 	   </div> 
+ 	  </div> 	  
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+		<br/>
+ 		<h:form rendered="${login.user != null}">
+ 			<div align="center">
+				<table border="1" width="50%" id="table1" title="Show Product Information">
+					<tr>
+						<td width="255">
+							<p align="left"/><i><b><font size="4" face="Century">Enter product Name:</font></b></i>
+						</td>
+						<td>
+					    	<center><h:inputText value="#{showproduct.name}" required="true" /></center>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" width="255">
+ 					    	<center><h:commandButton value="Get Product Info" action="#{showproduct.getProductInfo}" /></center>
+					    </td>
+					</tr>
+					<tr>
+						<td width="255">
+							<p align="left"/><i><b><font size="4" face="Century">Product description:</font></b></i>
+						</td>
+						<td>
+					    	<center><h:outputText value="#{showproduct.description}" required="true" /></center>
+						</td>
+					</tr>
+					<tr>
+						<td width="255">
+							<p align="left"/><i><b><font size="4" face="Century">Daily price:</font></b></i>
+						</td>
+						<td>
+					    	<center><h:outputText value="#{showproduct.dailyPrice}" required="true" /></center>
+						</td>
+					</tr>
+					<tr>
+						<td width="255">
+							<p align="left"/><i><b><font size="4" face="Century">Available items:</font></b></i>
+						</td>
+						<td>
+					    	<center><h:outputText value="#{showproduct.availableItems}" required="true" /></center>
+						</td>
+					</tr>
+					<tr>
+						<td width="255">
+							<p align="left"/><i><b><font size="4" face="Century">Product rating:</font></b></i>
+						</td>
+						<td>
+					    	<center><h:outputText value="#{showproduct.productRatting}" required="true" /></center>
+						</td>
+					</tr>
+				</table> 	
+			</div> 
+ 		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

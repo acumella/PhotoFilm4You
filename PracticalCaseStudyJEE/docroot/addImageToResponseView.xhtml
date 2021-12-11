@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+	<f:metadata>
+      <f:viewParam name="responseId" value="#{addimagetoresponse.responseId}"/>
+   	</f:metadata>
+
+<ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+ 		<div class="card">
+		  <div class="card-header">
+		    <h5 class="card-title">Add image to response</h5>
+		  </div>
+		  <div class="card-body">		    
+		   <h:form>
+ 			<div align="center">
+				<table border="1" width="50%" id="table1" title="Ask Question" cellspacing="30" cellpadding="5">
+					<tr>
+						<td width="255" align="left" >
+							<p align="left"/><i><b><font size="4" face="Century">Response ID: </font></b></i>
+						</td>
+						<td width="255" align="left">
+					    	<h:outputText value="#{addimagetoresponse.responseId}" />
+						</td>
+					</tr>
+					<tr>
+						<td width="255" align="left" >
+							<p align="left"/><i><b><font size="4" face="Century">Image Path: </font></b></i>
+						</td>
+						<td width="255" align="left">
+					    	<h:inputText value="#{addimagetoresponse.path}" required = "true"/>
+						</td>
+					</tr>
+				</table> 
+				<table border="0" width="50%" id="table2" title="add1" cellspacing="5" cellpadding="5">
+					<tr>
+						<td height="100" width="510" align="center">
+ 					    	<h:commandButton value="Add Image" action="#{addimagetoresponse.addImageToResponse}" />
+					    </td>
+					</tr>
+				</table> 
+				<p align="center">
+					<h:outputText value="Introdueix el nom del fitxer trobat a /resources/images/"/>
+				</p>
+			</div> 
+			
+			<p align="center">
+				<h:outputText value="#{addimagetoresponse.result}"/>
+			</p>
+			<p align="center">
+				<h:commandLink value="Return" action="listAllQuestionResponsesView" />
+			</p>
+			</h:form>
+		    
+		  </div>
+		</div>
+		
+
+	</ui:define>
+</ui:composition>
+</html>

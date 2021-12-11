@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+	<f:metadata>
+      <f:viewParam name="questionId" value="#{listallquestionresponses.questionId}"/>
+   </f:metadata>
+   
+<ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+ 	 <div class="card">
+	  <div class="card-header">
+	    <h5 class="card-title">List question responses</h5>
+	  </div>
+	  <div class="card-body">
+		
+	  <h:form align="left" >	
+		<h:dataTable value="#{listallquestionresponses.questionResponsesListView}" var="item" bgcolor="#F1F1F1" border="10" first="0" width="100%" frame="hsides" rules="all"  >
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="Id" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.id}" /></p>
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="Message" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.message}" /></p>
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="Status" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.status}" /></p>
+ 			</h:column>
+ 			<h:column>			
+					<h:link outcome="showResponseView" value="Show response" >
+						<f:param name="responseId" value="#{item.id}" />						
+					</h:link>		
+ 			</h:column> 
+ 			<h:column>			
+					<h:link outcome="addImageToResponseView" value="Add Image to Response" >
+						<f:param name="responseId" value="#{item.id}" />						
+					</h:link>		
+ 			</h:column> 
+ 		</h:dataTable>
+ 	  </h:form>	
+ 	  <br></br>
+	  <h:form align="left" >	
+		<h:commandLink action="#{listallquestionresponses.previousScreen}" value="Previous" />
+		<h:outputText value="   " />
+		<h:commandLink action="#{listallquestionresponses.nextScreen}" value="Next" />		
+		<p align="center">
+				<h:commandLink value="Return" action="listAllQuestionsView" />
+		</p>
+	  </h:form> 		
+	
+ 	   </div> 
+ 	  </div> 	  
+	</ui:define>
+</ui:composition>
+</html>

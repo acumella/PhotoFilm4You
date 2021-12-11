@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+   <f:metadata>
+      <f:viewParam name="idRent" value="#{rentItemsList.rentId}"/>
+   </f:metadata>
+
+  <ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+	  <h:form align="left" >	
+		<h:commandLink action="#{rentItemsList.previousScreen}" value="Previous" />
+		<h:outputText value="   " />
+		<h:commandLink action="#{rentItemsList.nextScreen}" value="Next" />
+	  </h:form>
+					
+	  <h:form align="left" >	
+		<h:dataTable value="#{rentItemsList.rentsListView}" var="item" bgcolor="#F1F1F1" border="10" first="0" width="100%" frame="hsides" rules="all"  >
+ 			<f:facet name="header">			
+  			<h:outputText align="center" value="All active rents" />		
+  			</f:facet> 
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="id" />
+   				</f:facet> 
+   				<p align="center"><h:outputText value="#{item.id}" /></p>
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="serial number"/>
+   				</f:facet> 
+     			<h:outputText value="#{item.item.serialNumber}" />
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="status"/>
+   				</f:facet> 
+     			<h:outputText value="#{item.item.status}" />
+ 			</h:column> 			
+ 		</h:dataTable>	
+		<p align="center">
+			<h:commandLink value="Return" action="listAllActiveRentsView" />
+		</p>
+ 	  </h:form>	
+	</ui:define>
+  </ui:composition>
+</html>

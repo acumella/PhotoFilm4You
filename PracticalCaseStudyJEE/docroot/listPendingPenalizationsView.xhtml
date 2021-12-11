@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+  <ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+	  <h:form align="left" >	
+		<h:commandLink action="#{penalizationList.previousScreen}" value="Previous" />
+		<h:outputText value="   " />
+		<h:commandLink action="#{penalizationList.nextScreen}" value="Next" />		
+	  </h:form>
+	  <h:form align="left" >	
+		<h:dataTable value="#{penalizationList.cancellationsListView}" var="item" bgcolor="#F1F1F1" border="10" first="0" width="100%" frame="hsides" rules="all"  >
+ 			<f:facet name="header">			
+  			<h:outputText align="center" value="Cancellations pending to be paid" />		
+  			</f:facet> 
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="Rent id" />
+   				</f:facet> 
+   				<p align="center"><h:outputText value="#{item.rent}" /></p>
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="Creation date"/>
+   				</f:facet> 
+     			<h:outputText converter="#{dateStyle}" value="#{item.creationDate}" />
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="Penalization" />
+   				</f:facet> 
+    			<h:outputText value="#{item.penalization}"  >
+     				<f:convertNumber type="currency"/>			
+     			</h:outputText>
+ 			</h:column>
+ 			<h:column>			
+					<h:link outcome="closePenalizationView" value="Close penalization" >
+						<f:param name="idRent" value="#{item.rent}" />						
+					</h:link>		
+ 			</h:column>
+ 		</h:dataTable>
+ 	  </h:form>		
+	</ui:define>
+  </ui:composition>
+</html>

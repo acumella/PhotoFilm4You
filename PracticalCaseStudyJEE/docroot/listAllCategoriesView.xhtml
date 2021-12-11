@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+	
+	<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">List of categories</h5>
+  </div>
+  <div class="card-body">
+	  <h:form align="left">	
+		<h:dataTable value="#{listallcategories.categoriesListView}" var="item" bgcolor="#F1F1F1" border="10" first="0" width="100%" frame="hsides" rules="all"  >
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="id" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.id}" /></p>
+ 			</h:column>
+ 			<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="name" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.name}" /></p>
+ 			</h:column>
+	 		<h:column>
+   				<f:facet name="header">
+   					<h:outputText value="parent" />
+   				</f:facet> 
+   				<p align="left"><h:outputText value="#{item.parentCategory.name}" /></p>
+ 			</h:column>
+		 	<h:column rendered="${login.user.role == 'ROLE_ADMIN'}">	
+		 		<f:facet name="header">
+		   			<h:outputText value="Update" />
+		   		</f:facet> 		
+				<h:link outcome="updateCategoryView" value="Update Category" >
+					<f:param name="id" value="#{item.id}" />
+					<f:param name="name" value="#{item.name}" />
+					<f:param name="parentCategory" value="#{not empty item.parentCategory ? item.parentCategory : 0}" />	
+				</h:link>		
+		 	</h:column>		
+		 	<h:column rendered="${login.user.role == 'ROLE_ADMIN'}">	
+		 		<f:facet name="header">
+		   			<h:outputText value="Delete" />
+		   		</f:facet> 		
+				<h:link outcome="deleteCategoryView" value="Delete Category" >
+					<f:param name="id" value="#{item.id}" />						
+				</h:link>		
+		 	</h:column>		
+		 	<h:column>	
+		 		<f:facet name="header">
+		   			<h:outputText value="Products" />
+		   		</f:facet> 		
+				<h:link outcome="listAllCategoryProductsView" value="Show products" >
+					<f:param name="id" value="#{item.id}" />						
+				</h:link>		
+		 	</h:column>	-->
+ 		</h:dataTable>
+ 	  </h:form>	
+ 	  <br></br>
+	 <h:form align="left">	
+		<h:commandLink action="#{listallcategories.previousScreen}" value="Previous" />
+		<h:outputText value="   " />
+		<h:commandLink action="#{listallcategories.nextScreen}" value="Next" />		
+	  </h:form>
+  </div>
+</div>
+	
+	</ui:define>
+  </ui:composition>
+</html>

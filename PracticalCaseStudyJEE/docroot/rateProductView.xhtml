@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+	<f:metadata>
+      <f:viewParam name="productId" value="#{rateproduct.productId}"/>
+   </f:metadata>
+
+<ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+ 	 <div class="card">
+	  <div class="card-header">
+	    <h5 class="card-title">Rate Product</h5>
+	  </div>
+	  <div class="card-body">	
+ 		<h:form>
+ 			<div align="center">
+				<table border="1" width="50%" id="table1" title="Rate Product">
+					<tr>
+						<td width="255"  align="left">
+							<p align="left"/><i><b><font size="4" face="Century">Product Id:</font></b></i>
+						</td>
+						<td>
+					    	<h:outputText value="#{rateproduct.productId}"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="255"  align="left">
+							<p align="left"/><i><b><font size="4" face="Century">Comment:</font></b></i>
+						</td>
+						<td>
+							<p align="left"/><h:inputText value="#{rateproduct.comment}"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="255"  align="left">
+							<p align="left"/><i><b><font size="4" face="Century">Rating:</font></b></i>
+						</td>
+						<td>
+							<p align="left"/><h:inputText value="#{rateproduct.rate}"/>
+						</td>
+					</tr>
+				</table> 
+				<table border="0" width="50%" id="table2" title="del1" cellspacing="5" cellpadding="5">
+					<tr>
+						<td height="100" width="510" align="center">
+ 					    	<h:commandButton value="Rate Product" action="#{rateproduct.rateProduct}" />
+					    </td>
+					</tr>
+				</table> 	
+			</div> 
+			<p align="center">
+				<h:outputText value="#{rateproduct.result}"/>
+			</p>
+			<p align="center">
+				<h:commandLink value="Return" action="listAllProductsView" />
+			</p>
+ 		</h:form>
+ 		</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<ui:composition template="./headerView.xhtml">
+	<ui:define name="content">
+	<div class="card">
+	  <div class="card-header">
+		  <h5 class="card-title">Create new product</h5>
+	  </div>
+	 <div class="card-body">
+ 		<h:form rendered="${login.user != null}">
+ 			<div align="center">
+				<table border="1" width="50%" id="table1" title="Add Product" cellspacing="30" cellpadding="5">
+					<tr>
+						<td width="255" align="left">
+							<p align="left"/><i><b><font size="4" face="Century">Category</font></b></i>
+						</td>
+						<td width="255" align="left">
+					    	<h:selectOneMenu value="#{addproduct.categoryName}">
+    							<f:selectItems value="#{addproduct.categoryNames}" />
+							</h:selectOneMenu>
+						</td>
+					</tr>
+					<tr>
+						<td width="255" align="left">
+							<p align="left"/><i><b><font size="4" face="Century">Product</font></b></i>
+						</td>
+						<td width="255" align="left">
+					    	<h:inputText value="#{addproduct.name}" required="true" a:maxlength="20"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="255" align="left">
+							<p align="left"/><i><b><font size="4" face="Century">Brand</font></b></i>
+						</td>
+						<td width="255" align="left">
+					    	<h:selectOneMenu value="#{addproduct.brandName}">
+    								<f:selectItems value="#{addproduct.brandNames}" />
+    								<f:ajax event="change" render="models" />
+							</h:selectOneMenu>
+						</td>
+					</tr>
+					<tr>
+						<td width="255" align="left">
+							<p align="left"/><i><b><font size="4" face="Century">Model</font></b></i>
+						</td>
+						<td width="255" align="left">
+					    	<h:selectOneMenu value="#{addproduct.modelName}" id="models">
+    							<f:selectItems value="#{addproduct.modelNames}" />
+							</h:selectOneMenu>
+						</td>
+					</tr>
+					<tr>
+						<td width="255" align="left">
+							<p align="left"/><i><b><font size="4" face="Century">Daily Price</font></b></i>
+						</td>
+						<td width="255" align="left">
+					    	<h:inputText value="#{addproduct.dailyPrice}" required="true" />
+						</td>
+					</tr>
+					<tr>
+						<td width="255" align="left">
+							<p align="left"/><i><b><font size="4" face="Century">Product Description:</font></b></i>
+						</td>
+						<td width="255" align="left">
+					    	<h:inputText value="#{addproduct.description}" required="true" a:maxlength="255"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="255" align="left">
+							<p align="left"/><i><b><font size="4" face="Century">Result</font></b></i>
+						</td>
+						<td width="255" align="left">
+							<p align="left"/><h:outputText value="#{addproduct.result}" />
+						</td>
+					</tr>
+				</table> 	
+				<table border="0" width="50%" id="table2" title="add1" cellspacing="5" cellpadding="5">
+					<tr>
+						<td height="100" width="510" align="center">
+ 					    	<h:commandButton value="Add Product" action="#{addproduct.addNewProduct}" />
+					    </td>
+					</tr>
+				</table>
+			</div> 
+ 		</h:form>
+ 	    </div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
